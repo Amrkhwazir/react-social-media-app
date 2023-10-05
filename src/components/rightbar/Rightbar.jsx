@@ -34,12 +34,59 @@ export default function Rightbar({profile}){
     }
 
     const ProfileRightbar =()=>{
-        return(<h1>hey its profile right bar</h1>)
+        return(
+            <>
+            <h4 className="rightbarTitle">User information</h4>
+            <div className="rightbarInfo">
+                <div className="rightbarInfoItem">
+                    <span className="rightbarInfoKey">City:</span>
+                    <span className="rightbarInfoValue">Karachi</span>
+                </div>
+                <div className="rightbarInfoItem">
+                    <span className="rightbarInfoKey">From:</span>
+                    <span className="rightbarInfoValue">Swat</span>
+                </div>
+                <div className="rightbarInfoItem">
+                    <span className="rightbarInfoKey">Relationship:</span>
+                    <span className="rightbarInfoValue">Single</span>
+                </div>
+            </div>
+            <h4 className="rightbarTitle">User information</h4>
+            <div className="rightbarFollowings">
+                <div className="rightbarFollowing">
+                    <img src="assets/profile pic/pp1.jpg" alt="" className="rightbarFollowingImg" />
+                    <span className="rightbarFollowingName">John Doe</span>
+                </div>
+                <div className="rightbarFollowing">
+                    <img src="assets/profile pic/pp2.jpg" alt="" className="rightbarFollowingImg" />
+                    <span className="rightbarFollowingName">John Doe</span>
+                </div>
+                <div className="rightbarFollowing">
+                    <img src="assets/profile pic/pp3.webp" alt="" className="rightbarFollowingImg" />
+                    <span className="rightbarFollowingName">John Doe</span>
+                </div>
+                <div className="rightbarFollowing">
+                    <img src="assets/profile pic/pp4.jpeg" alt="" className="rightbarFollowingImg" />
+                    <span className="rightbarFollowingName">John Doe</span>
+                </div>
+                <div className="rightbarFollowing">
+                    <img src="assets/profile pic/pp4.webp" alt="" className="rightbarFollowingImg" />
+                    <span className="rightbarFollowingName">John Doe</span>
+                </div>
+                <div className="rightbarFollowing">
+                    <img src="assets/profile pic/pp5.jpeg" alt="" className="rightbarFollowingImg" />
+                    <span className="rightbarFollowingName">John Doe</span>
+                </div>
+            </div>
+            </>
+
+        )
     }
+
     return(
         <div className="rightbar">
             <div className="rightbarWrapper">
-                <ProfileRightbar/>
+                {profile ? <ProfileRightbar/>: <HomeRightbar/>}
             </div>
         </div>
     )
