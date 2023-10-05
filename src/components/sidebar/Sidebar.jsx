@@ -1,7 +1,12 @@
 import "./sidebar.css"
-import {HelpOutline, RssFeed, School, WorkOutline, Event, PlayCircleFilledOutlined, Group, Chat} from "@mui/icons-material"
+import {HelpOutline, RssFeed, School, WorkOutline, Event, PlayCircleFilledOutlined, Group, Chat} from "@mui/icons-material";
+import { users } from "../../dummyData.js";
+
 
 export default function Sidebar(){
+
+
+
     return(
         <div className="sidebar">
             <div className="sidebarWrapper">
@@ -42,40 +47,18 @@ export default function Sidebar(){
                 <button className="sidebarButton">Show More</button>
                 <hr className="sidebarHr"/>
                 <ul className="sidebarFriendList">
-                    <li className="sidebarFriend">
-                        <img src="/assets/profile pic/pp2.jpg" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Jane Doe</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/profile pic/pp2.jpg" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Jane Doe</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/profile pic/pp2.jpg" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Jane Doe</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/profile pic/pp2.jpg" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Jane Doe</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/profile pic/pp2.jpg" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Jane Doe</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/profile pic/pp2.jpg" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Jane Doe</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/profile pic/pp2.jpg" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Jane Doe</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/profile pic/pp2.jpg" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Jane Doe</span>
+
+                    <>
+                    {users.map((u)=>(
+                        <li className="sidebarFriend">
+                        <img src={u?.profilePic} alt="" className="sidebarFriendImg" />
+                        <span className="sidebarFriendName">{u?.username}</span>
                     </li>
                      
-                </ul>
+                    ))}
+                    
+                    </>
+                 </ul>
             </div>
         </div>
     )
