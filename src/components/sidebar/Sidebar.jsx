@@ -3,9 +3,10 @@ import {HelpOutline, RssFeed, School, WorkOutline, Event, PlayCircleFilledOutlin
 import { users } from "../../dummyData.js";
 
 
+
 export default function Sidebar(){
 
-
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
     return(
         <div className="sidebar">
@@ -49,9 +50,9 @@ export default function Sidebar(){
                 <ul className="sidebarFriendList">
 
                     <>
-                    {users.map((u)=>(
-                        <li className="sidebarFriend">
-                        <img src={u?.profilePic} alt="" className="sidebarFriendImg" />
+                    {users.map((u, indx)=>(
+                        <li key={indx} className="sidebarFriend">
+                        <img src={PF+u?.profilePic} alt="" className="sidebarFriendImg" />
                         <span className="sidebarFriendName">{u?.username}</span>
                     </li>
                      

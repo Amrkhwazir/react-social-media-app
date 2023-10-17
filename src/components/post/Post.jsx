@@ -1,12 +1,27 @@
 import { MoreVert } from "@mui/icons-material"
 import "./post.css"
-import {users} from "../../dummyData.js"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axios from "axios";
+import {format} from "timeago.js";
+import {Link} from "react-router-dom";
+
 
 export default function Post({post}){
+    
 
-    const [like, setLike] = useState(post.like)
+    const [like, setLike] = useState(post.likes.length)
     const [isLiked, setIsLiked] = useState(false)
+    const [user, setUser] = useState({});
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+    useEffect( ()=>{
+        async function fetchUser(){
+            const response = await axios.get(`http://127.0.0.1:8000/profile?userId=${post.userId}`)
+            setUser(response.data);
+        }
+        fetchUser()
+    },[post.userId]);
+
 
     const likeHandler = ()=>{
         setLike(isLiked ? like - 1: like + 1 )
@@ -18,9 +33,11 @@ export default function Post({post}){
            <div className="postWrapper">
             <div className="postTop">
                 <div className="postTopLeft">
-                    <img src={users.filter((u)=> u.id == post.userId)[0]?.profilePic} alt="" className="postProfileImg" />
-                    <span className="postUsername">{users.filter((u)=> u.id === post.userId)[0]?.username}</span>
-                    <span className="postDate">{post.date}</span>
+                    <Link to={`profile/${user.name}`}>
+                    <img src={user.profilePicture || PF+"avatar.jpg"} alt="" className="postProfileImg" />
+                    </Link>
+                    <span className="postUsername">{user.name}</span>
+                    <span className="postDate">{format(post.createdAt)}</span>
                 </div>
                 <div className="postTopRight">
                     <MoreVert/>
@@ -28,7 +45,7 @@ export default function Post({post}){
             </div>
             <div className="postCenter">
                 <span className="postText">{post?.desc}</span>
-                <img src={post.photo} alt="" className="postImg" />
+                <img src={PF+post.img} alt="" className="postImg" />
             </div>
             <div className="postBottom">
                 <div className="postBottomLeft">
